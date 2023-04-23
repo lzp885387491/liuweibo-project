@@ -269,7 +269,11 @@
                 </div>
             </div>
         </div>
-        <el-dialog class="video-box" title="提示" v-model="dialogVisible" :visible.sync="dialogVisible" :before-close="handleClose">
+        <el-dialog class="video-box" v-model="dialogVisible" :visible.sync="dialogVisible"
+            :before-close="handleClose">
+            <video ref="video" id='myvideo2' controls autoplay loop webkit-playsinline playsinline>
+                <source src="@/assets/video/WeChat_20230423192825.mp4">
+            </video>
         </el-dialog>
 
     </div>
@@ -282,11 +286,11 @@ export default {
     data() {
         return {
             dialogVisible: false,
+            video: null
         }
     },
 
     mounted() {
-        this.hh()
     },
     methods: {
         hh() {
@@ -297,40 +301,18 @@ export default {
         },
         handleVideo() {
             this.dialogVisible = true;
-            let asd = document.querySelector('.video-box')
-            asd.innerHTML = `
-           <video id='myvideo2' controls autoplay loop webkit-playsinline playsinline >
-            <source src="https://file.qingflow.com/official-page/index/v2022/section1.mp4">
-            </video>
-            <div class="vid-btn">退出视频</div>
-            `
-            let sb = document.querySelector('#myvideo2')
-            let vidBtn = document.querySelector('.vid-btn')
-            sb.style.position = 'absolute'
-            sb.style.top = '50%'
-            sb.style.left = '50%'
-            sb.style.transform = 'translate(-50%, -50%)'
-
-            vidBtn.style.position = 'absolute'
-            vidBtn.style.padding = '10px 20px'
-            vidBtn.style.top = '20%'
-            vidBtn.style.right = '20%'
-            vidBtn.style.background = '#fff'
-            vidBtn.style.borderRadius = '10px'
-            vidBtn.style.cursor = 'pointer';
-            vidBtn.addEventListener('click',()=>{
-                this.handleClose();
-            })
+            if(this.$refs.video){
+                this.$refs.video.currentTime = 0
+                this.$refs.video.play()
+            }
         },
-        del(){
-            this.dialogVisible=false;
+        del() {
+            this.dialogVisible = false;
+            this.$refs.video.pause()
         },
         handleClose() {
-            this.dialogVisible = false
-            var player = videojs('myvideo2', {}, function () {
-                console.log('初始化成功');
-            })
-            player.dispose()
+            this.dialogVisible = false;
+            this.$refs.video.pause()
         }
 
     },
@@ -339,10 +321,36 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.none{
+::v-deep .el-dialog__headerbtn{
+    font-size: 50px;
+    z-index: 99;
+}
+::v-deep .el-dialog__close{
+    // color: transparent;
+    background-color: #fff;
+    border-radius: 50%;
+}
+::v-deep .el-dialog__header{
+    padding: 0;
+}
+::v-deep .el-dialog__body{
+    padding: 0;
+}
+::v-deep #myvideo2{
+    border-radius: 30px;
+}
+::v-deep .el-dialog{
+    background-color: transparent;
+    box-shadow: none;
+    width: 1300px;
+    border-radius: 10px;
+    border-radius: 25px;
+}
+.none {
     display: none;
 }
-#myvideo {
+
+#myvideo2 {
     width: 100%;
     height: 100%;
 }
