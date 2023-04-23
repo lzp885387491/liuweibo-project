@@ -5,13 +5,13 @@
                 <div class="header-box">
                     <div class="logo">早早财</div>
                     <div class="right flex-center">
-                        <div class="nav flex-center">
+                        <div class="nav flex-center" style="min-width: 300px;">
                             <div class="item" :class="item.isShow ? 'active' : ''" v-for="item in navList" :key="item.id"
                                 @click="nav(item)">
                                 {{ item.text }}
                             </div>
                         </div>
-                        <div class="userinfo flex-center">
+                        <div class="userinfo flex-center" style="min-width: 150px !important;">
                             <div class="text">登录</div>
                             <div class="describe">免费试用</div>
                         </div>
@@ -36,11 +36,6 @@
                         <img src="@/assets/images/icon-us.png" alt="">
                         <div>联系我们</div>
                     </div>
-                    <!-- <div class="border-button"></div>
-                    <div class="item">
-                        <img src="@/assets/images/icon-top.png" alt="">
-                        <div>回到顶部</div>
-                    </div> -->
                 </div>
             </el-main>
         </el-container>
@@ -154,10 +149,6 @@ export default {
                     margin-right: 10px;
                     cursor: pointer;
                 }
-
-                // .describe{
-
-                // }
             }
         }
     }
