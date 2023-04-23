@@ -1,5 +1,5 @@
 <template>
-    <div class="main">
+    <div class="main wrap">
         price
     </div>
 </template>
@@ -24,8 +24,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.wrap{
-    width: 1300px;
-    margin: 0 auto;
-}
+
 </style>
