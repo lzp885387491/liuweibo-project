@@ -447,6 +447,7 @@ export default {
         display: flex;
         position: relative;
         overflow: hidden;
+        height: 1273px;
         .item{
             width: 400px;
             height: 100%;
