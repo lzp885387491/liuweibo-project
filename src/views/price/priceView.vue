@@ -7,7 +7,7 @@
         <div class="middle">
             <div class="selector">
                 <el-switch style="display: block" v-model="value" active-color="#5417f4" inactive-color="red"
-                    active-text="每年" inactive-text="每月">
+                    active-text="每年" inactive-text="每月" @change="switchs">
                 </el-switch>
             </div>
             <div class="content">
@@ -63,11 +63,21 @@
                 </div>
             </div>
         </div>
+        <div class="bottom">
+            <div class="join">
+                <h1 class="join-title">加入早早财，拉近智能编程的未来！</h1>
+                <button>立即体验</button>
+            </div>
+        </div>
+        <FootCom></FootCom>
     </div>
 </template>
 
 <script>
+import FootCom from '@/components/FootCom.vue';
+
 export default {
+    components: {"FootCom": FootCom},
     data() {
         return {
             value: true,
@@ -200,7 +210,185 @@ export default {
 
     },
     methods: {
-
+        switchs(e){
+            if (e==false) {
+                this.list = [
+                {
+                    id:1,
+                    headerTitle:'个人版',
+                    introduce:'注册即用，按需购买，运维专业保障，每周更新',
+                    isprice:1,
+                    price:'49',
+                    isFree:1,//是否限免
+                    buttonText:'免费试用',
+                    serviceOther:'',
+                    service:[
+                        {
+                            text:'个人代码分析'
+                        },{
+                            text:'代码理解',
+                        },{
+                            text:'CodeReview工具',
+                        },{
+                            text:'Git集成',
+                        },{
+                            text:'行业横向分析',
+                        },{
+                            text:'提交代码历史',
+                        },{
+                            text:'项目审查',
+                        },{
+                            text:'代码复用度检测甘特图',
+                        },{
+                            text:'需求管理'
+                        }
+                    ]
+                },
+                {
+                    id:2,
+                    headerTitle:'企业版',
+                    introduce:'5人起购，专业放心',
+                    isprice:1,
+                    price:'199',
+                    isFree:1,//是否限免
+                    buttonText:'免费试用',
+                    serviceOther:'个人版所有功能',
+                    service:[
+                        {
+                            text:'项目优化建议'
+                        },{
+                            text:'DevOps分析报告',
+                        },{
+                            text:'绩效设置',
+                        },{
+                            text:'业务分析',
+                        },{
+                            text:'协同账号',
+                        },{
+                            text:'项目流程分析',
+                        },{
+                            text:'代码库备份',
+                        },{
+                            text:'分支策略',
+                        },{
+                            text:'安全漏洞分析'
+                        },{
+                            text:'安全管理'
+                        },{
+                            text:'团队管理'
+                        }
+                    ]
+                },
+                {
+                    id:3,
+                    headerTitle:'私有部署版',
+                    introduce:'企业自身私有服务器部署，网络隔离，数据自控',
+                    isprice:0,
+                    price:'咨询报价',
+                    isFree:0,//是否限免
+                    buttonText:'联系我们',
+                    serviceOther:'企业版所有功能',
+                    service:[
+                        {
+                            text:'私有云部署'
+                        },{
+                            text:'专属技术支持',
+                        },{
+                            text:'专属迭代部署',
+                        }
+                    ]
+                }
+            ]
+            }else{
+                this.list=[
+                {
+                    id:1,
+                    headerTitle:'个人版',
+                    introduce:'注册即用，按需购买，运维专业保障，每周更新',
+                    isprice:1,
+                    price:'588',
+                    isFree:1,//是否限免
+                    buttonText:'免费试用',
+                    serviceOther:'',
+                    service:[
+                        {
+                            text:'个人代码分析'
+                        },{
+                            text:'代码理解',
+                        },{
+                            text:'CodeReview工具',
+                        },{
+                            text:'Git集成',
+                        },{
+                            text:'行业横向分析',
+                        },{
+                            text:'提交代码历史',
+                        },{
+                            text:'项目审查',
+                        },{
+                            text:'代码复用度检测甘特图',
+                        },{
+                            text:'需求管理'
+                        }
+                    ]
+                },
+                {
+                    id:2,
+                    headerTitle:'企业版',
+                    introduce:'5人起购，专业放心',
+                    isprice:1,
+                    price:'2388',
+                    isFree:1,//是否限免
+                    buttonText:'免费试用',
+                    serviceOther:'个人版所有功能',
+                    service:[
+                        {
+                            text:'项目优化建议'
+                        },{
+                            text:'DevOps分析报告',
+                        },{
+                            text:'绩效设置',
+                        },{
+                            text:'业务分析',
+                        },{
+                            text:'协同账号',
+                        },{
+                            text:'项目流程分析',
+                        },{
+                            text:'代码库备份',
+                        },{
+                            text:'分支策略',
+                        },{
+                            text:'安全漏洞分析'
+                        },{
+                            text:'安全管理'
+                        },{
+                            text:'团队管理'
+                        }
+                    ]
+                },
+                {
+                    id:3,
+                    headerTitle:'私有部署版',
+                    introduce:'企业自身私有服务器部署，网络隔离，数据自控',
+                    isprice:0,
+                    price:'咨询报价',
+                    isFree:0,//是否限免
+                    buttonText:'联系我们',
+                    serviceOther:'企业版所有功能',
+                    service:[
+                        {
+                            text:'私有云部署'
+                        },{
+                            text:'专属技术支持',
+                        },{
+                            text:'专属迭代部署',
+                        }
+                    ]
+                }
+            ]
+            }
+        }
     },
     mounted() {
 
@@ -512,6 +700,37 @@ export default {
                 color: #0052cc;
                 cursor: pointer;
             }
+        }
+    }
+}
+.bottom{
+    padding: 73px 0 117px;
+    .join{
+        width: 100%;
+        height: 323px;
+        padding: 105px 0 67px;
+        background-image: url('https://hibug.com/img/join-hibug.6de1bd74.png');
+        background-size: cover;
+        background-position: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        box-sizing: border-box;
+        .join-title{
+            font-size: 36px;
+            line-height: 54px;
+            text-align: justify;
+            letter-spacing: -.38px;
+            color: #fff;
+        }
+        button{
+            width: 173px;
+            height: 50px;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: rgb(245,63,63);
+            color: #fff;
         }
     }
 }
