@@ -5,21 +5,38 @@
                 <div class="header-box">
                     <div class="logo">早早财</div>
                     <div class="right flex-center">
-                        <div class="nav flex-center">
+                        <div class="nav flex-center" style="min-width: 300px;">
                             <div class="item" :class="item.isShow ? 'active' : ''" v-for="item in navList" :key="item.id"
                                 @click="nav(item)">
                                 {{ item.text }}
                             </div>
                         </div>
-                        <div class="userinfo flex-center">
+                        <div class="userinfo flex-center" style="min-width: 150px !important;">
                             <div class="text">登录</div>
                             <div class="describe">免费试用</div>
                         </div>
                     </div>
                 </div>
             </el-header>
+
             <el-main>
                 <router-view />
+                <div class="advertisement">
+                    <div class="item">
+                        <img src="@/assets/images/icon-vx.png" alt="">
+                        <div>微信客服</div>
+                    </div>
+                    <div class="border-button"></div>
+                    <div class="item">
+                        <img src="@/assets/images/icon-phone.png" alt="">
+                        <div>电话咨询</div>
+                    </div>
+                    <div class="border-button"></div>
+                    <div class="item">
+                        <img src="@/assets/images/icon-us.png" alt="">
+                        <div>联系我们</div>
+                    </div>
+                </div>
             </el-main>
         </el-container>
     </div>
@@ -54,7 +71,7 @@ export default {
                     link: 'activity',
                     isShow: false,
                 },
-            ]
+            ],
         }
     },
     created() {
@@ -77,6 +94,9 @@ export default {
                     element.isShow = !element.isShow;
                 }
             });
+        },
+        abc() {
+            console.log(document.querySelector('body').scrollTop)
         }
     },
 }
@@ -121,18 +141,14 @@ export default {
             }
 
             .userinfo {
-                border: 1px solid #000;
                 padding: 10px 20px;
                 box-sizing: border-box;
+                background-color: #e6e6e6;
 
                 .text {
                     margin-right: 10px;
                     cursor: pointer;
                 }
-
-                // .describe{
-
-                // }
             }
         }
     }
@@ -142,12 +158,50 @@ export default {
     height: calc(100vh - 61px);
     background-color: #fff;
     padding: 0;
+
+    .advertisement {
+        padding: 10px 5px;
+        box-sizing: border-box;
+        background-color: #fff;
+        box-shadow: 0 0 5px #000;
+        position: fixed;
+        bottom: 300px;
+        right: 0px;
+
+        .item {
+            font-size: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+            cursor: pointer;
+
+            img {
+                width: 26px;
+                height: 26px;
+            }
+        }
+
+        .item:hover {
+            color: #2339de;
+        }
+
+        .border-button {
+            width: 100%;
+            height: 1px;
+            background-color: #8a8989;
+        }
+    }
+}
+
+::-webkit-scrollbar {
+    display: none;
 }
 
 .active {
     color: #2339de;
     box-sizing: border-box;
-    border-bottom: 1px solid #2339de;
 }
 
 .flex-center {
