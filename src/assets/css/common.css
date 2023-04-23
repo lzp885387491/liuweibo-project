@@ -38,3 +38,7 @@ figcaption {
     -webkit-tap-highlight-color: transparent;
     -webkit-font-smoothing: antialiased;
 }
+.wrap{
+    width: 1300px;
+    margin: 0 auto;
+}

@@ -34,7 +34,7 @@ export default {
                     id: 1,
                     text: '产品',
                     link: 'product',
-                    isShow: true,
+                    isShow: false,
                 },
                 {
                     id: 2,
@@ -58,8 +58,12 @@ export default {
         }
     },
     created() {
-        this.active(this.navList[0]);
-        this.$router.push(this.navList[0].link)
+        let name = this.$route.name.slice(0, -4);
+        this.navList.forEach(element => {
+            if (element.link == name) {
+                element.isShow = !element.isShow;
+            }
+        });
     },
     methods: {
         nav(item) {
@@ -68,9 +72,11 @@ export default {
         },
         active(item) {
             this.navList.forEach(element => {
-                element.isShow = false
+                element.isShow = false;
+                if (element == item) {
+                    element.isShow = !element.isShow;
+                }
             });
-            item.isShow = true
         }
     },
 }
