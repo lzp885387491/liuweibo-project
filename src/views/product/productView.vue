@@ -264,7 +264,6 @@
                     <div class="flex-center">
                         <img src="@/assets/images/icon-jc.png" alt="">
                         京公网安备 11010802040993号
-                        <img src="@/assets/images/x.png" alt="">
                     </div>
                 </div>
             </div>

@@ -106,8 +106,7 @@ export default {
 .el-header {
     height: 60px !important;
     padding: 0;
-    border-bottom: 1px solid #000;
-
+    border-bottom: 1px solid #ccc;
     .header-box {
         width: 100vw;
         height: 60px;
@@ -163,7 +162,7 @@ export default {
         padding: 10px 5px;
         box-sizing: border-box;
         background-color: #fff;
-        box-shadow: 0 0 5px #000;
+        box-shadow: 0 7px 20px 0 rgba(39,0,142,.1);
         position: fixed;
         bottom: 300px;
         right: 0px;
